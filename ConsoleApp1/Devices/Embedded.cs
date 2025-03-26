@@ -2,6 +2,9 @@ using System.Text.RegularExpressions;
 
 namespace Tutorial3_Task;
 
+/// <summary>
+/// This class represents an embedded device and inherits from device
+/// </summary>
 class Embedded : Device
 {
     public string NetworkName { get; set; }
@@ -23,6 +26,14 @@ class Embedded : Device
         }
     }
     
+    /// <summary>
+    /// This is the constructor and I switched isEnabled to isConnected
+    /// </summary>
+    /// <param name="id">The unique identifier </param>
+    /// <param name="name">The name </param>
+    /// <param name="ipAddress">The IP address </param>
+    /// <param name="isConnected">Indicates whether the device is connected to the network.</param>
+    /// <param name="networkName">The name of the network </param>
     public Embedded(string id, string name, string ipAddress, bool isConnected, string networkName) : base(id, name)
     {
         if (CheckId(id))
@@ -35,6 +46,10 @@ class Embedded : Device
         _isConnected = isConnected;
     }
 
+    /// <summary>
+    /// This method disconnects an embedded device and I added it instead of using the turn of
+    /// method to adhere to the Liskov substitution principle and interface segregation principle
+    /// </summary>
     public void Disconnect()
     {
         _isConnected = false;
@@ -45,11 +60,18 @@ class Embedded : Device
         string enabledStatus = IsEnabled ? "enabled" : "disabled";
         return $"Embedded device {Name} ({Id}) is {enabledStatus} and has IP address {IpAddress}";
     }
-
+    
+    /// <summary>
+    /// This method formats device data to be saved
+    /// </summary>
     public override string saveDevice()
     {
         return ToString();
     }
+    
+    /// <summary>
+    /// This method connects an embedded device
+    /// </summary>
     private void Connect()
     {
         if (NetworkName.Contains("MD Ltd."))

@@ -1,5 +1,8 @@
 namespace Tutorial3_Task;
 
+/// <summary>
+/// Now the PC class inherits from turnDevices instead of Device in order to differentiate that it can be turned on and off
+/// </summary>
 class PersonalComputer : TurnDevices
 {
     public string? OperatingSystem { get; set; }
@@ -30,10 +33,17 @@ class PersonalComputer : TurnDevices
         string osStatus = OperatingSystem is null ? "has not OS" : $"has {OperatingSystem}";
         return $"PC {Name} ({Id}) is {enabledStatus} and {osStatus}";
     }
+    
+    /// <summary>
+    /// This method formats device data to be saved
+    /// </summary>
+    /// <returns>
+    /// String representation of the device
+    /// </returns>
     public override string saveDevice()
     {
         return ToString();
     }
-
+    
     private bool CheckId(string id) => id.Contains("P-");
 }

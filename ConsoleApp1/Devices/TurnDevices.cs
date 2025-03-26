@@ -1,6 +1,11 @@
 namespace Tutorial3_Task;
 
-public abstract class TurnDevices:Device//I added this class as only the PC and smartwatch turn on and off, the embedded device can only be connected. Therefore, the method in embedded device has a different fucntionality and violates the Liskov Substitution principle
+/// <summary>
+/// I implemented an TurnDevices interface that inherits from Device class in order to differentiate between
+/// devices that can be turned on and off and ones that cannot (such as embedded device).
+/// This makes sure the Liskov substitution principle and the interface segregation principle are followed
+/// </summary>
+public abstract class TurnDevices:Device
 {
     public bool IsEnabled { get; private set; }
 
@@ -8,13 +13,28 @@ public abstract class TurnDevices:Device//I added this class as only the PC and 
     {
         IsEnabled = isEnabled;
     }
+    
+    /// <summary>
+    /// Methods to turn devices on and off
+    /// </summary>
+    public virtual void TurnOn()
+    {
+        IsEnabled = true;
+    }
 
-    public virtual void TurnOn() => IsEnabled = true;
-    public virtual void TurnOff() => IsEnabled = false;
-
+    public virtual void TurnOff()
+    {
+        IsEnabled = false;
+    }
+    
+    /// <summary>
+    /// This method formats device data to be saved
+    /// </summary>
+    /// <returns>
+    /// String representation of the device
+    /// </returns>
     public override string saveDevice()
     {
         return $"{Id},{Name},{IsEnabled}";
     }
-    
 }

@@ -2,8 +2,8 @@ namespace Tutorial3_Task;
 
 public class DeviceManager
 {
-    private readonly ParserIntreface _deviceParser;//Parser Interface instead of device parser
-    private readonly DataInterface _fileService;//Data intreface instead of file service
+    private readonly ParserIntreface _deviceParser;
+    private readonly DataInterface _fileService;
     private const int MaxCapacity = 15;
     private List<Device> _devices = new(capacity: MaxCapacity);
 
@@ -32,8 +32,18 @@ public class DeviceManager
         
         _devices.Add(newDevice);
     }
-
-    public void EditDevice(Device editDevice)//In this method, I decided to delete the if statements to adhere to the open- closed principle. Instead, I made it universal for each device
+    
+    /// <summary>
+    /// I decided to delete the if statements in this method and make it
+    /// universal for all devices making it adhere to the open-closed principle
+    /// </summary>
+    /// <param name="editDevice">
+    /// The device with the new details
+    /// </param>
+    /// <exception cref="ArgumentException">
+    /// Error if there is no device with the id we want
+    /// </exception>
+    public void EditDevice(Device editDevice)
     {
         var targetDeviceIndex = -1;
         for (var index = 0; index < _devices.Count; index++)
@@ -54,7 +64,7 @@ public class DeviceManager
         
         _devices[targetDeviceIndex] = editDevice;
         
-        }
+    }
     public void RemoveDeviceById(string deviceId)
     {
         Device? targetDevice = null;

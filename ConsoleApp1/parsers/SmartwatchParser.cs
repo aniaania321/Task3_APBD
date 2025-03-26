@@ -1,5 +1,8 @@
 namespace Tutorial3_Task;
 
+/// <summary>
+/// The class to parse the SW
+/// </summary>
 public class SmartwatchParser:DeviceParserInterface
 {
     public bool whichDevice(string line)
@@ -19,6 +22,21 @@ public class SmartwatchParser:DeviceParserInterface
     
     private const int BatteryPosition = 3;
     
+    /// <summary>
+    /// This method does the same thing that was the resposinibility of the device parser previously
+    /// </summary>
+    /// <param name="line">
+    /// Device data
+    /// </param>
+    /// <param name="lineNumber">
+    /// Used for error
+    /// </param>
+    /// <returns>
+    /// A PC object returned that was created
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// If a line cannot be parsed
+    /// </exception>
     public Device parse(string line, int lineNumber)
     {
         var infoSplits = line.Split(',');

@@ -13,7 +13,16 @@ class DeviceParser: ParserIntreface
             new EmbeddedParser()
         };
     }
-
+    /// <summary>
+    /// Instead of checking manually what type the device is, I use the deviceParserInterface I created.
+    /// This makes sure the code adheres to the open-closed principle
+    /// </summary>
+    /// <param name="lines">
+    /// Array of strings with lines to parse
+    /// </param>
+    /// <returns>
+    /// A list of devices parsed
+    /// </returns>
     public List<Device> ParseDevices(string[] lines)
     {
         List<Device> devices = new List<Device>();

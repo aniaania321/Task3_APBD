@@ -2,7 +2,11 @@ using System.Text;
 
 namespace Tutorial3_Task;
 
-public class FileService:DataInterface//created file service to apply single responsibility principle (taken away from device manager)
+/// <summary>
+/// I created the FileService class to apply the single responibility principle
+/// by taking away the responsibility of processing files form device manager class
+/// </summary>
+public class FileService:DataInterface
 {
     private string _inputDeviceFile;
 
@@ -23,7 +27,15 @@ public class FileService:DataInterface//created file service to apply single res
         return lines;
     }
     
-    public void SaveDevices(List<Device> devices)// I added an abstract method for saving devices so that we can have a universal one here
+    /// <summary>
+    /// By previously adding the saveDevice method to the device classes
+    /// I was able to create a more universal method for saving
+    /// devices to a file (adheres to the open-closed principle)
+    /// </summary>
+    /// <param name="devices">
+    /// A list of Device objects that we want to save to the file
+    /// </param>
+    public void SaveDevices(List<Device> devices)
     {
         StringBuilder devicesSb = new();
 

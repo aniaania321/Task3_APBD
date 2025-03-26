@@ -1,5 +1,8 @@
 namespace Tutorial3_Task;
 
+/// <summary>
+/// This abstract class defines different devices
+/// </summary>
 public abstract class Device
 {
     public string Id { get; set; }
@@ -12,6 +15,11 @@ public abstract class Device
         Name = name;
     }
     
-    public abstract string saveDevice();//method added so that we don't have to differentate for different devices, it will be implemented in their classes
+    /// <summary>
+    /// This method was added so that we don't have to differentiate for different devices in the FileService class therefore making them independent (Open-closed principle) 
+    /// It is implemented by derived classes and formats device data
+    /// </summary>
+    /// <returns>A string representation of the device's data.</returns>
+    public abstract string saveDevice();
     
 }
