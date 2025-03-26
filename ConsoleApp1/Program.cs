@@ -8,7 +8,9 @@ class Program
         try
         {
             FileService fileService = new("/Users/aniasmuga/RiderProjects/Task3_APBD/ConsoleApp1/input.txt");
-            DeviceManager deviceManager = new(fileService);
+            DeviceParser deviceParser = new();
+            DeviceManager deviceManager = new(fileService, deviceParser);
+            
             
             Console.WriteLine("Devices presented after file read.");
             deviceManager.ShowAllDevices();

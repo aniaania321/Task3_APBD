@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Tutorial3_Task;
 
-public class FileService//created file service to apply single responsibility principle (taken away from device manager)
+public class FileService:DataInterface//created file service to apply single responsibility principle (taken away from device manager)
 {
     private string _inputDeviceFile;
 

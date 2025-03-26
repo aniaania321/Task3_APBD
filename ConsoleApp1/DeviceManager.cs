@@ -4,15 +4,16 @@ namespace Tutorial3_Task;
 
 class DeviceManager
 {
-    private readonly DeviceParser _deviceParser = new DeviceParser();
-    private readonly FileService _fileService;
+    private readonly ParserIntreface _deviceParser;//Parser Interface instead of device parser
+    private readonly DataInterface _fileService;//Data intreface instead of file service
     private const int MaxCapacity = 15;
     private List<Device> _devices = new(capacity: MaxCapacity);
 
-    public DeviceManager(FileService fileService)
+    public DeviceManager(DataInterface fileService, ParserIntreface deviceParser)
     {
         _fileService = fileService;
         string[] lines=fileService.GetDevices(); 
+        _deviceParser = deviceParser;
         _devices = _deviceParser.ParseDevices(lines);
     }
 

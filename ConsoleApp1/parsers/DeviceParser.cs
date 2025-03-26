@@ -1,6 +1,6 @@
 namespace Tutorial3_Task;
 
-class DeviceParser
+class DeviceParser: ParserIntreface
 {
     private List<DeviceParserInterface> _parsers;
 
