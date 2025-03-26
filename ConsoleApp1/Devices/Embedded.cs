@@ -52,6 +52,10 @@ class Embedded : Device
         return $"Embedded device {Name} ({Id}) is {enabledStatus} and has IP address {IpAddress}";
     }
 
+    public override string saveDevice()
+    {
+        return ToString();
+    }
     private void Connect()
     {
         if (NetworkName.Contains("MD Ltd."))

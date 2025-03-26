@@ -23,32 +23,17 @@ public class FileService//created file service to apply single responsibility pr
         return lines;
     }
     
-    public void SaveDevices(List<Device> devices)
+    public void SaveDevices(List<Device> devices)// I added an abstract method for saving devices so that we can have a universal one here
     {
         StringBuilder devicesSb = new();
 
         foreach (var storedDevice in devices)
         {
-            if (storedDevice is Smartwatch smartwatchCopy)
-            {
-                devicesSb.AppendLine($"{smartwatchCopy.Id},{smartwatchCopy.Name}," +
-                                     $"{smartwatchCopy.IsEnabled},{smartwatchCopy.BatteryLevel}%");
-            }
-            else if (storedDevice is PersonalComputer pcCopy)
-            {
-                devicesSb.AppendLine($"{pcCopy.Id},{pcCopy.Name}," +
-                                     $"{pcCopy.IsEnabled},{pcCopy.OperatingSystem}");
-            }
-            else
-            {
-                var embeddedCopy = storedDevice as Embedded;
-                devicesSb.AppendLine($"{embeddedCopy.Id},{embeddedCopy.Name}," +
-                                     $"{embeddedCopy.IsEnabled},{embeddedCopy.IpAddress}," +
-                                     $"{embeddedCopy.NetworkName}");
-            }
+            devicesSb.AppendLine(storedDevice.saveDevice());
         }
-        
-        File.WriteAllLines(_inputDeviceFile, devicesSb.ToString().Split('\n'));
+
+        File.WriteAllText("input.txt", devicesSb.ToString());
     }
+
 
 }

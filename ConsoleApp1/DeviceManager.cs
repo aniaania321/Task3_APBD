@@ -34,7 +34,7 @@ class DeviceManager
         _devices.Add(newDevice);
     }
 
-    public void EditDevice(Device editDevice)
+    public void EditDevice(Device editDevice)//In this method, I decided to delete the if statements to adhere to the open- closed principle. Instead, I made it universal for each device
     {
         var targetDeviceIndex = -1;
         for (var index = 0; index < _devices.Count; index++)
@@ -52,46 +52,10 @@ class DeviceManager
             throw new ArgumentException($"Device with ID {editDevice.Id} is not stored.", nameof(editDevice));
         }
 
-        if (editDevice is Smartwatch)
-        {
-            if (_devices[targetDeviceIndex] is Smartwatch)
-            {
-                _devices[targetDeviceIndex] = editDevice;
-            }
-            else
-            {
-                throw new ArgumentException($"Type mismatch between devices. " +
-                                            $"Target device has type {_devices[targetDeviceIndex].GetType().Name}");
-            }
-        }
         
-        if (editDevice is PersonalComputer)
-        {
-            if (_devices[targetDeviceIndex] is PersonalComputer)
-            {
-                _devices[targetDeviceIndex] = editDevice;
-            }
-            else
-            {
-                throw new ArgumentException($"Type mismatch between devices. " +
-                                            $"Target device has type {_devices[targetDeviceIndex].GetType().Name}");
-            }
-        }
+        _devices[targetDeviceIndex] = editDevice;
         
-        if (editDevice is Embedded)
-        {
-            if (_devices[targetDeviceIndex] is Embedded)
-            {
-                _devices[targetDeviceIndex] = editDevice;
-            }
-            else
-            {
-                throw new ArgumentException($"Type mismatch between devices. " +
-                                            $"Target device has type {_devices[targetDeviceIndex].GetType().Name}");
-            }
         }
-    }
-
     public void RemoveDeviceById(string deviceId)
     {
         Device? targetDevice = null;

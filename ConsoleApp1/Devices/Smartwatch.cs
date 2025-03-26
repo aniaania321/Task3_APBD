@@ -57,6 +57,11 @@ class Smartwatch : Device, IPowerNotify
         string enabledStatus = IsEnabled ? "enabled" : "disabled";
         return $"Smartwatch {Name} ({Id}) is {enabledStatus} and has {BatteryLevel}%";
     }
+    public override string saveDevice()
+    {
+        return ToString();
+    }
+
     
     private bool CheckId(string id) => id.Contains("E-");
 }

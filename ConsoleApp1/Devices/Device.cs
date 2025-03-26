@@ -22,4 +22,6 @@ public abstract class Device
     {
         IsEnabled = false;
     }
+    public abstract string saveDevice();//method added so that we don't have to differentate for different devices, it will be implemented in their classes
+    
 }

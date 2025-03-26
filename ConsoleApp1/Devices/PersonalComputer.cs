@@ -30,6 +30,10 @@ class PersonalComputer : Device
         string osStatus = OperatingSystem is null ? "has not OS" : $"has {OperatingSystem}";
         return $"PC {Name} ({Id}) is {enabledStatus} and {osStatus}";
     }
+    public override string saveDevice()
+    {
+        return ToString();
+    }
 
     private bool CheckId(string id) => id.Contains("P-");
 }
