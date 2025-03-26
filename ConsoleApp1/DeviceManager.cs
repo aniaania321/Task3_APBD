@@ -78,31 +78,32 @@ class DeviceManager
 
     public void TurnOnDevice(string id)
     {
-        foreach (var storedDevice in _devices)
+        var storedDevice = GetDeviceById(id);
+
+        if (storedDevice is TurnDevices controllableDevice)
         {
-            if (storedDevice.Id.Equals(id))
-            {
-                storedDevice.TurnOn();
-                return;
-            }
+            controllableDevice.TurnOn();
         }
-        
-        throw new ArgumentException($"Device with ID {id} is not stored.", nameof(id));
+        else
+        {
+            throw new InvalidOperationException($"Device {id} cannot be turned on.");
+        }
     }
 
     public void TurnOffDevice(string id)
     {
-        foreach (var storedDevice in _devices)
+        var storedDevice = GetDeviceById(id);
+
+        if (storedDevice is TurnDevices controllableDevice)
         {
-            if (storedDevice.Id.Equals(id))
-            {
-                storedDevice.TurnOff();
-                return;
-            }
+            controllableDevice.TurnOff();
         }
-        
-        throw new ArgumentException($"Device with ID {id} is not stored.", nameof(id));
+        else
+        {
+            throw new InvalidOperationException($"Device {id} cannot be turned off.");
+        }
     }
+
 
     public Device? GetDeviceById(string id)
     {

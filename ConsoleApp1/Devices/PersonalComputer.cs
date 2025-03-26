@@ -1,6 +1,6 @@
 namespace Tutorial3_Task;
 
-class PersonalComputer : Device
+class PersonalComputer : TurnDevices
 {
     public string? OperatingSystem { get; set; }
     

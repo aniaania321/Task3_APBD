@@ -1,6 +1,6 @@
 namespace Tutorial3_Task;
 
-class Smartwatch : Device, IPowerNotify
+class Smartwatch : TurnDevices, IPowerNotify
 {
     private int _batteryLevel;
 

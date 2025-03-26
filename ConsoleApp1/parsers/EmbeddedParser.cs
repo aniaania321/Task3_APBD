@@ -36,7 +36,7 @@ public class EmbeddedParser:DeviceParserInterface
         }
 
         return new Embedded(infoSplits[IndexPosition], infoSplits[DeviceNamePosition], 
-            bool.Parse(infoSplits[EnabledStatusPosition]), infoSplits[IpAddressPosition], 
+            infoSplits[IpAddressPosition],bool.Parse(infoSplits[EnabledStatusPosition]), 
             infoSplits[NetworkNamePosition]);
     }
 }

@@ -23,7 +23,7 @@ class Embedded : Device
         }
     }
     
-    public Embedded(string id, string name, bool isEnabled, string ipAddress, string networkName) : base(id, name, isEnabled)
+    public Embedded(string id, string name, string ipAddress, bool isConnected, string networkName) : base(id, name)
     {
         if (CheckId(id))
         {
@@ -32,18 +32,12 @@ class Embedded : Device
 
         IpAddress = ipAddress;
         NetworkName = networkName;
+        _isConnected = isConnected;
     }
 
-    public override void TurnOn()
-    {
-        Connect();
-        base.TurnOn();
-    }
-
-    public override void TurnOff()
+    public void Disconnect()
     {
         _isConnected = false;
-        base.TurnOff();
     }
 
     public override string ToString()
