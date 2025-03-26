@@ -1,8 +1,6 @@
-using System.Text;
-
 namespace Tutorial3_Task;
 
-class DeviceManager
+public class DeviceManager
 {
     private readonly ParserIntreface _deviceParser;//Parser Interface instead of device parser
     private readonly DataInterface _fileService;//Data intreface instead of file service

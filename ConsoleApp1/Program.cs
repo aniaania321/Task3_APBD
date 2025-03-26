@@ -9,7 +9,7 @@ class Program
         {
             FileService fileService = new("/Users/aniasmuga/RiderProjects/Task3_APBD/ConsoleApp1/input.txt");
             DeviceParser deviceParser = new();
-            DeviceManager deviceManager = new(fileService, deviceParser);
+            DeviceManager deviceManager = DeviceManagerFactory.CreateDeviceManager(fileService, deviceParser);
             
             
             Console.WriteLine("Devices presented after file read.");
